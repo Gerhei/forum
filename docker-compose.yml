@@ -1,0 +1,27 @@
+version: "3.5"
+services:
+  web:
+    image: ${IMAGE_NAME}
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: unless-stopped
+    container_name: ${COMPOSE_PROJECT_NAME}_web
+    depends_on:
+      - db
+    env_file:
+      - ./config/.env
+    command: [
+      "./docker/django/start_socket_web.sh"
+    ]
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    container_name: ${COMPOSE_PROJECT_NAME}_db
+    env_file:
+      - ./config/.env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
