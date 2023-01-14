@@ -10,6 +10,7 @@ class Section(models.Model):
         'Section',
         on_delete=models.PROTECT,
         null=True,
+        blank=True,
         verbose_name='parent section'
     )
 
