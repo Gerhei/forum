@@ -11,6 +11,9 @@ services:
       - db
     env_file:
       - ./config/.env
+    volumes:
+      - ${SERVER_DIR}/media:/var/www/django/media
+      - ${SERVER_DIR}/static:/var/www/django/static
     command: [
       "./docker/django/start_socket_web.sh"
     ]
