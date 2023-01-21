@@ -11,6 +11,7 @@ class Section(models.Model):
         on_delete=models.PROTECT,
         null=True,
         blank=True,
+        related_name='children',
         verbose_name='parent section'
     )
 

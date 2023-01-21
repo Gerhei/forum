@@ -12,11 +12,11 @@ class AccountAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('topic_name', '__str__', 'account', 'created_at')
+    list_display = ('topic_name', '__str__', 'user', 'created_at')
     list_display_links = ('__str__',)
-    fields = ('topic', 'account', 'text', 'created_at', 'updated_at')
+    fields = ('topic', 'user', 'text', 'created_at', 'updated_at')
     readonly_fields = ('created_at', 'updated_at')
-    search_fields = ('topic__name', 'account__user__username')
+    search_fields = ('topic__name', 'user__username')
     list_filter = ('created_at',)
 
     @admin.display(description='Topic', ordering='topic__name')
@@ -41,8 +41,10 @@ class SectionAdmin(admin.ModelAdmin):
 
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ('name', 'section_name', 'account', 'slug', 'created_at')
-    search_fields = ('name', 'account__user__username', 'section__name')
+    list_display = ('name', 'section_name', 'user', 'slug', 'created_at')
+    search_fields = ('name', 'user__username', 'section__name')
+    fields = ('name', 'section', 'user', 'slug', 'created_at')
+    readonly_fields = ('slug', 'created_at', 'user')
 
     @admin.display(description='Section', ordering='section__name')
     def section_name(self, obj):
