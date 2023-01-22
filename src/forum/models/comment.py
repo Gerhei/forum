@@ -1,7 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 
 COMMENT_IS_EDITABLE_SECONDS = 600
 
@@ -24,12 +25,10 @@ class Comment(models.Model):
     def is_changed(self):
         return self.updated_at - self.created_at > timedelta(seconds=1)
 
-    def is_editable(self):
-        return datetime.now() - self.created_at < timedelta(seconds=COMMENT_IS_EDITABLE_SECONDS)
-
-    def is_editable_for_user(self, user):
+    def is_editable(self, user=None):
         """It is possible to edit only your own comments only for a certain time after creation"""
-        return all([user, self.is_editable(), self.user == user])
+        is_new_comment = timezone.now() - self.created_at < timedelta(seconds=COMMENT_IS_EDITABLE_SECONDS)
+        return all([user, is_new_comment, self.user == user])
 
     class Meta:
         verbose_name = "comment"
