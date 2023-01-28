@@ -1,18 +1,11 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 
-from src.forum.models import Topic, Comment
+from src.forum.views.comment.serializers import CommentSerializer
+from src.forum.models import Topic
 
 
-class CommentSerializer(serializers.ModelSerializer):
-    user_id = serializers.IntegerField(required=True)
-
-    class Meta:
-        model = Comment
-        exclude = ('topic', 'user')
-
-
-class TopicSerializer(serializers.ModelSerializer):
+class TopicDetailSerializer(serializers.ModelSerializer):
     section_id = serializers.IntegerField(required=True)
     user_id = serializers.IntegerField(required=True)
     comments = CommentSerializer(many=True, required=True)
@@ -34,3 +27,11 @@ class TopicRequestBodySerializer(serializers.Serializer):
                 fields=['name', 'section_id']
             )
         ]
+
+
+class TopicSerializer(serializers.Serializer):
+    id = serializers.IntegerField(required=True)
+    name = serializers.CharField(required=True)
+    slug = serializers.CharField(required=True)
+    user = serializers.CharField(required=False)
+    created_at = serializers.DateTimeField(required=True)

@@ -1,14 +1,7 @@
 from rest_framework import serializers
 
+from src.forum.views.topic.serializers import TopicSerializer
 from src.forum.models import Section
-
-
-class TopicSerializer(serializers.Serializer):
-    id = serializers.IntegerField(required=True)
-    name = serializers.CharField(required=True)
-    slug = serializers.CharField(required=True)
-    user = serializers.CharField(required=False)
-    created_at = serializers.DateTimeField(required=True)
 
 
 class SectionSerializer(serializers.Serializer):
@@ -29,4 +22,3 @@ class SectionDetailSerializer(serializers.ModelSerializer):
 
 class SectionListSerializer(serializers.Serializer):
     sections = SectionSerializer(required=False, many=True)
-
