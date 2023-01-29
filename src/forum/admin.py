@@ -1,13 +1,5 @@
 from django.contrib import admin
-from src.forum.models import Account, Comment, Section, Topic
-
-
-@admin.register(Account)
-class AccountAdmin(admin.ModelAdmin):
-    list_display = ('user', 'slug', 'reputation')
-    fields = ('user', 'slug', 'reputation', 'description')
-    readonly_fields = ('slug',)
-    search_fields = ('user__username',)
+from src.forum.models import Comment, Section, Topic
 
 
 @admin.register(Comment)
