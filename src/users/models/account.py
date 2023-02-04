@@ -30,6 +30,10 @@ class Account(models.Model):
         self.slug = slugify(self.user.username)
         super(Account, self).save(*args, **kwargs)
 
+    @property
+    def username(self):
+        return self.user.username
+
     class Meta:
         verbose_name = "account"
         verbose_name_plural = "accounts"
