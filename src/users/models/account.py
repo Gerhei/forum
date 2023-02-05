@@ -2,7 +2,7 @@ import os
 
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils.text import slugify
+from slugify import slugify
 
 
 def avatar_filename(instance, filename):
