@@ -9,5 +9,4 @@ class AccountSerializer(serializers.Serializer):
 
 
 class AccountRequestBodySerializer(serializers.Serializer):
-    slug = serializers.CharField(required=True)
     description = serializers.CharField(required=True, allow_blank=True)

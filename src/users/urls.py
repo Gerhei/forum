@@ -13,5 +13,5 @@ urlpatterns = [
     # path('password/reset', , name='password_reset'),
     # path('reset/<int:uidb64>/<str:token>', , name='password_reset_confirm'),
     path('account/get/<str:slug>', AccountView().as_view(), name='get-account'),
-    path('account/update', AccountUpdateView().as_view(), name='update-account'),
+    path('account/update/<str:slug>', AccountUpdateView().as_view(), name='update-account'),
 ]

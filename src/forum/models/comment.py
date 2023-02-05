@@ -25,10 +25,10 @@ class Comment(models.Model):
     def is_changed(self):
         return self.updated_at - self.created_at > timedelta(seconds=1)
 
-    def is_editable(self, user=None):
-        """It is possible to edit only your own comments only for a certain time after creation"""
+    def is_editable(self):
+        """It is possible to edit only for a certain time after creation"""
         is_new_comment = timezone.now() - self.created_at < timedelta(seconds=COMMENT_IS_EDITABLE_SECONDS)
-        return all([user, is_new_comment, self.user == user])
+        return is_new_comment
 
     class Meta:
         verbose_name = "comment"

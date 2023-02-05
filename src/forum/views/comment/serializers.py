@@ -9,7 +9,6 @@ class CommentRequestBodySerializer(serializers.Serializer):
 
 
 class CommentUpdateRequestBodySerializer(serializers.Serializer):
-    comment_id = serializers.IntegerField(required=True)
     text = serializers.CharField(required=True)
 
 

@@ -29,13 +29,18 @@ class TopicService:
         comment = Comment.objects.create(topic=topic, text=text, user=user)
         return comment
 
-    def update_comment(self, comment_id: int, text: str, user) -> Comment:
+    @classmethod
+    def get_comment(cls, comment_id: int) -> Comment:
         try:
             comment = Comment.objects.get(id=comment_id)
         except ObjectDoesNotExist:
             raise EntityNotFound('Comment not found.')
-        if not comment.is_editable(user=user):
-            raise AccessError('This comment can\'t be edited because you are not author or the time has passed during '
+        return comment
+
+    @classmethod
+    def update_comment(cls, comment: Comment, text: str) -> Comment:
+        if not comment.is_editable():
+            raise AccessError('This comment can\'t be edited because time has passed during '
                               'which it could have been edited.')
         comment.text = text
         comment.save()
