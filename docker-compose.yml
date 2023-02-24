@@ -12,6 +12,7 @@ services:
     env_file:
       - ./config/.env
     volumes:
+      - ${SERVER_DIR}:/django
       - ${SERVER_DIR}/media:/var/www/django/media
       - ${SERVER_DIR}/static:/var/www/django/static
     command: [

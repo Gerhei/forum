@@ -15,10 +15,11 @@ services:
       - "8000:8000"
     volumes:
       - .:/code
+      - ${SERVER_DIR}:/django
       - ${SERVER_DIR}/media:/var/www/django/media
       - ${SERVER_DIR}/static:/var/www/django/static
     command: [
-      "./docker/django/start_remote_web.sh"
+      "./docker/django/start_socket_web.sh"
     ]
   db:
     image: postgres:15-alpine
@@ -30,6 +31,17 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  nginx:
+    image: nginx:1.22-alpine
+    restart: unless-stopped
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    volumes:
+      - ${PROJECT_DIR}/docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ${PROJECT_DIR}/docker/nginx/nginx.dev.instance.conf:/etc/nginx/conf.d/default.conf
+      - ${SERVER_DIR}:/django
+      - ${SERVER_DIR}/frontend/src:/src
+    ports:
+      - "442:443"
 
 volumes:
   pgdata:
