@@ -24,6 +24,12 @@ class Section(models.Model):
         self.slug = slugify(self.name)
         super(Section, self).save(*args, **kwargs)
 
+    def get_children(self) -> list['Section']:
+        return self.children.all()
+
+    def get_topics(self) -> list:
+        return self.topics.all()
+
     class Meta:
         verbose_name = "section"
         verbose_name_plural = "sections"

@@ -1,17 +1,21 @@
 from django.core.exceptions import ObjectDoesNotExist
 
 from src.common.exceptions.domain_exceptions import EntityNotFound
-from src.forum.dto.section import SectionListDto
+from src.forum.dto.section import SectionListDto, SectionDetailDto
 from src.forum.models import Section
 
 
 class SectionService:
-    def get_section(self, slug: str) -> Section:
+    def get_section(self, slug: str | None) -> SectionDetailDto:
+        if slug is None:
+            root_sections = Section.objects.filter(parent=None)
+            return SectionDetailDto.create_root_section(children=root_sections)
+
         try:
             section = Section.objects.get(slug=slug)
         except ObjectDoesNotExist:
             raise EntityNotFound
-        return section
+        return SectionDetailDto.create(section)
 
     def get_section_list(self, parent_slug: str | None) -> SectionListDto:
         if not parent_slug:

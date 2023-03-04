@@ -1,0 +1,31 @@
+.menu {
+    color: #ccdae2;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.menu ul {
+    padding: 0px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.menu ul > li {
+    padding: 10px;
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+a.nav-link {
+    text-decoration: none;
+}
+
+a.nav-link:visited {
+    color: inherit;
+}
+
+a.nav-link:hover {
+    color: #add;
+}

@@ -1,0 +1,15 @@
+.header {
+    margin: 20px auto 0px auto;
+    padding: 10px;
+    color: #ccdae2;
+}
+
+.header .title {
+    padding: 10px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+    border-top: 2px solid #ccdae2;
+    text-align: center;
+    border-bottom: 2px solid #ccdae2;
+}

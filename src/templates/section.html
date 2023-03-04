@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="/static/forum/css/section.css">
+{% endblock extra_styles %}
+
+{% block content %}
+{% if section_list %}
+<section class="section-list">
+    <div class="content__title">
+        <h2>Разделы</h2>
+    </div>
+    <table class="content__table">
+        <tbody id=sections>
+        {% for section in section_list %}
+        <tr>
+            <td><a href="?section={{ section.slug }}" class="nav-link">{{ section.name }}</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endif %}
+
+{% if topic_list %}
+<section class="topic-list">
+    <div class="content__title">
+        <h2>Темы</h2>
+    </div>
+    <table class="content__table">
+        <thead class="content__title">
+        <th>Тема</th>
+        <th>Автор</th>
+        <th>Дата создания</th>
+        </thead>
+        <tbody id=topics>
+        {% for topic in topic_list %}
+        <tr>
+            <td><a href="/topic/{{ topic.slug }}" class="nav-link">{{ topic.name }}</a></td>
+            <td>{{ topic.user }}</td>
+            <td>{{ topic.created_at }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</section>
+{% endif %}
+{% endblock content %}

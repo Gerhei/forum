@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from src.forum.views.topic.serializers import TopicSerializer
+from src.forum.api_views.topic.serializers import TopicSerializer
 from src.forum.models import Section
 
 

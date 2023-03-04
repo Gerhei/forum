@@ -8,7 +8,7 @@ from src.common.decorators.view_decorators import custom_extend_schema, input_se
 from src.common.permissions.permissions import IsOwnerOrReadOnly
 from src.forum.models.comment import COMMENT_IS_EDITABLE_SECONDS
 from src.forum.services.topic import TopicService
-from src.forum.views.comment.serializers import CommentRequestBodySerializer, CommentUpdateRequestBodySerializer
+from src.forum.api_views.comment.serializers import CommentRequestBodySerializer, CommentUpdateRequestBodySerializer
 
 
 class CommentCreateView(APIView):

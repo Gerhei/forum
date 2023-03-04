@@ -1,0 +1,27 @@
+@import url('./navigation.css');
+@import url('./header.css');
+@import url('./footer.css');
+@import url('./content.css');
+@import url('./announcement.css');
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1f2b36;
+}
+
+body {
+    background-color: transparent;
+    height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.content-wrapper {
+	flex: 1 0 auto;
+}

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
 
-from src.forum.views.comment.serializers import CommentSerializer
+from src.forum.api_views.comment.serializers import CommentSerializer
 from src.forum.models import Topic
 
 
