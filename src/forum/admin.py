@@ -36,7 +36,7 @@ class TopicAdmin(admin.ModelAdmin):
     list_display = ('name', 'section_name', 'user', 'slug', 'created_at')
     search_fields = ('name', 'user__username', 'section__name')
     fields = ('name', 'section', 'user', 'slug', 'created_at')
-    readonly_fields = ('slug', 'created_at', 'user')
+    readonly_fields = ('slug', 'created_at')
 
     @admin.display(description='Section', ordering='section__name')
     def section_name(self, obj):

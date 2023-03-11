@@ -22,6 +22,9 @@ class Topic(models.Model):
         self.slug = slugify(f'{self.section.name}-{self.name}')
         super(Topic, self).save(*args, **kwargs)
 
+    def get_comments(self) -> list:
+        return self.comments.all()
+
     class Meta:
         verbose_name = "topic"
         verbose_name_plural = "topics"

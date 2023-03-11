@@ -1,16 +1,17 @@
 from django.core.exceptions import ObjectDoesNotExist
 
+from src.forum.dto.topic import TopicDetailDto
 from src.common.exceptions.domain_exceptions import EntityNotFound, AccessError
 from src.forum.models import Topic, Comment
 
 
 class TopicService:
-    def get_topic(self, slug: str) -> Topic:
+    def get_topic(self, slug: str) -> TopicDetailDto:
         try:
             topic = Topic.objects.get(slug=slug)
         except ObjectDoesNotExist:
             raise EntityNotFound('Topic not found.')
-        return topic
+        return TopicDetailDto.create(topic)
 
     def create_topic(self, name: str, section_id: int, comment: str, user) -> Topic:
         try:

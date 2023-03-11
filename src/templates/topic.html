@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="/static/forum/css/topic.css">
+{% endblock extra_styles %}
+
+{% block content %}
+<section class="topic" id="topic">
+    <div class="content__title">
+        <h2>{{ topic.name }}</h2>
+    </div>
+    {% for comment in topic.comments %}
+    <div class="comment">
+        <div class="comment__user">
+            <div class="user-image">
+                <img src="/static/common/img/default-avatar.png" class="avatar">
+            </div>
+
+            <div class="user-info">
+                <div class="user__name">{{ comment.user }}</div>
+            </div>
+        </div>
+
+        <div class="comment__content">
+            <div class="comment__date">
+                {{ comment.created_at }}
+            </div>
+    
+            <div class="comment__text">
+                {{ comment.text }}
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</section>
+{% endblock content %}
