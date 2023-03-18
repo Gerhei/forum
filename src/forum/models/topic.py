@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 from slugify import slugify
 
 
@@ -21,6 +22,9 @@ class Topic(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(f'{self.section.name}-{self.name}')
         super(Topic, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('topic', kwargs={'slug': self.slug})
 
     def get_comments(self) -> list:
         return self.comments.all()

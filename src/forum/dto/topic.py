@@ -16,7 +16,7 @@ class TopicDto:
 
     @classmethod
     def create(cls, topic: Topic) -> 'TopicDto':
-        username = topic.user.name if topic.user else None
+        username = topic.user.username if topic.user else None
         return TopicDto(id=topic.id,
                         name=topic.name,
                         slug=topic.slug,
@@ -37,7 +37,7 @@ class TopicDetailDto:
 
     @classmethod
     def create(cls, topic: Topic) -> 'TopicDetailDto':
-        username = topic.user.name if topic.user else None
+        username = topic.user.username if topic.user else None
         comments = [CommentDto.create(comment) for comment in topic.get_comments()]
         return TopicDetailDto(id=topic.id,
                               name=topic.name,

@@ -5,6 +5,12 @@
 {% endblock extra_styles %}
 
 {% block content %}
+{% if request.user.is_authenticated and section.slug %}
+<div class="create-topic">
+    <a href="{% url 'create_topic' section.slug %}" class="nav-link">Создать тему</a>
+</div>
+{% endif %}
+
 {% if section_list %}
 <section class="section-list">
     <div class="content__title">

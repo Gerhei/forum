@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="/static/common/css/form.css">
+{% endblock extra_styles %}
+
+{% block content %}
+<div class="content__title">
+    <h2>Создание темы</h2>
+</div>
+
+<form action="{% url 'create_topic' section.slug %}" method="post">
+    <div class="section">Раздел: {{ section.name }}</div>
+
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input type="submit" value="Отправить">
+</form>
+{% endblock content %}

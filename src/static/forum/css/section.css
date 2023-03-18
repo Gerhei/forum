@@ -40,3 +40,18 @@
 .sections-list, .topics-list {
     padding: 10px;
 }
+
+.create-topic {
+    padding: 10px;
+    text-align: right;
+}
+
+.create-topic a {
+    color: #272b2c;
+    font-weight: bold;
+}
+
+.create-topic a:hover {
+    color: #272b2c;
+    text-shadow: 0 0 .5px #333, 0 0 .5px #333;
+}

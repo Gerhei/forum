@@ -12,6 +12,7 @@ class SectionView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         section = self._get_section(slug=self.request.GET.get('section', None))
+        context['section'] = section
         context['section_list'] = section.children
         context['topic_list'] = section.topics
         return context

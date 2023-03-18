@@ -2,6 +2,7 @@
 
 {% block extra_styles %}
 <link rel="stylesheet" href="/static/forum/css/topic.css">
+<link rel="stylesheet" href="/static/common/css/form.css">
 {% endblock extra_styles %}
 
 {% block content %}
@@ -25,7 +26,7 @@
             <div class="comment__date">
                 {{ comment.created_at }}
             </div>
-    
+
             <div class="comment__text">
                 {{ comment.text }}
             </div>
@@ -33,5 +34,20 @@
 
     </div>
     {% endfor %}
+
+    {% if request.user.is_authenticated %}
+    <div class="create-comment">
+        <div class="content__title">
+            <h3>Оставить комментарий</h3>
+        </div>
+
+        <form action="{% url 'create_comment' topic.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+    {% endif %}
+
 </section>
 {% endblock content %}
