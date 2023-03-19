@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 from src.common.decorators.view_decorators import custom_extend_schema, input_serializer
 from src.users.services.auth import AuthService
-from src.users.views.login.serializers import LoginSerializer
+from src.users.api_views.login.serializers import LoginSerializer
 
 
 class LoginView(APIView):

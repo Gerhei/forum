@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="/static/common/css/form.css">
+{% endblock extra_styles %}
+
+{% block content %}
+    <form method="post" action="{% url 'login' %}">
+        {% if next %}
+            {% if user.is_authenticated %}
+            <div class="form-message">У вашей учетной записи нет доступа к этой странице. Чтобы продолжить,
+                пожалуйста, войдите в систему с учетной записью, имеющей доступ.</div>
+            {% else %}
+            <div class="form-message">Пожалуйста, войдите, чтобы просмотреть эту страницу.</div>
+            {% endif %}
+        {% endif %}
+
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" value="Войти">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+{% endblock %}

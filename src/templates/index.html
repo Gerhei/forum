@@ -22,6 +22,19 @@
         <nav class="menu">
             <ul id="main-menu">
                 <li><a href="/" class="nav-link">Форум</a></li>
+
+                {% if request.user.is_staff %}
+                    <li><a href="/admin/" class="nav-link">Администрирование</a></li>
+                {% endif %}
+
+                {% if request.user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" class="nav-link">Выход</a></li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" class="nav-link">Вход</a> |
+                        <a href="{% url 'registration' %}" class="nav-link">Регистрация</a>
+                    </li>
+                {% endif %}
             </ul>
         </nav>
 

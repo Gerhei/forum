@@ -6,9 +6,10 @@ API_PREFIX = 'api'
 
 urlpatterns = [
     path('', include('src.forum.urls')),
-    path('admin/', admin.site.urls),
+    path('accounts/', include('src.users.urls')),
+    path('admin/', admin.site.urls, name='admin'),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('schema/redoc', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
     path(f'{API_PREFIX}/', include('src.forum.api_urls')),
-    path(f'{API_PREFIX}/auth/', include('src.users.urls')),
+    path(f'{API_PREFIX}/auth/', include('src.users.api_urls')),
 ]

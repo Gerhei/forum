@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from src.common.decorators.view_decorators import custom_extend_schema, input_serializer
 from src.common.permissions.permissions import IsOwnerOrReadOnly
 from src.users.services.account import AccountService
-from src.users.views.account.serializers import AccountSerializer, AccountRequestBodySerializer
+from src.users.api_views.account.serializers import AccountSerializer, AccountRequestBodySerializer
 
 
 class AccountView(APIView):

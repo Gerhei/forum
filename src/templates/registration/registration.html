@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block extra_styles %}
+<link rel="stylesheet" href="/static/common/css/form.css">
+{% endblock extra_styles %}
+
+{% block content %}
+<div class="content__title">
+    <h2>Регистрация</h2>
+</div>
+
+<form action="{% url 'registration' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input type="submit" value="Регистрация">
+</form>
+{% endblock content %}
