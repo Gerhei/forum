@@ -30,7 +30,7 @@ class Topic(models.Model):
         return self.comments.all()
 
     class Meta:
-        verbose_name = "topic"
-        verbose_name_plural = "topics"
+        verbose_name = "Тема"
+        verbose_name_plural = "Темы"
         ordering = ('-created_at', 'name')
         unique_together = (('name', 'section'),)

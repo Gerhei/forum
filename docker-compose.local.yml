@@ -19,7 +19,7 @@ services:
       - ${SERVER_DIR}/media:/var/www/django/media
       - ${SERVER_DIR}/static:/var/www/django/static
     command: [
-      "./docker/django/start_socket_web.sh"
+      "./docker/django/start_remote_web.sh"
     ]
   db:
     image: postgres:15-alpine

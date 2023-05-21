@@ -31,6 +31,6 @@ class Comment(models.Model):
         return is_new_comment
 
     class Meta:
-        verbose_name = "comment"
-        verbose_name_plural = "comments"
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
         ordering = ('topic', 'created_at')

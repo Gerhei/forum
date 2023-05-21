@@ -31,6 +31,6 @@ class Section(models.Model):
         return self.topics.all()
 
     class Meta:
-        verbose_name = "section"
-        verbose_name_plural = "sections"
+        verbose_name = "Раздел"
+        verbose_name_plural = "Разделы"
         ordering = ('order', 'name')
